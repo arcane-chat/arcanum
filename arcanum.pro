@@ -6,7 +6,7 @@ TEMPLATE = app
 TARGET = arcanum
 INCLUDEPATH += .
 
-QT += gui widgets
+QT += gui widgets webengine webenginewidgets webchannel
 
 # Input
 SOURCES += src/main.cpp

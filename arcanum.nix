@@ -1,7 +1,10 @@
-{ qtbase, qmakeHook, stdenv }:
+{ stdenv, qmakeHook, makeQtWrapper
+, qtbase, qtwebengine, qtwebchannel
+}:
 
 stdenv.mkDerivation {
   name = "arcanum";
   src = ./.;
-  buildInputs = [ qtbase qmakeHook ];
+  buildInputs = [ qmakeHook makeQtWrapper qtbase qtwebengine qtwebchannel ];
+  QTWEBENGINEPROCESS_PATH = "${qtwebengine.out}/libexec";
 }
