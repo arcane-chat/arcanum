@@ -1,8 +1,8 @@
-{ nixpkgs ? <nixpkgs> }:
+{ nixpkgs ? ./pkgs.nix }:
 
 let
   pkgs = import nixpkgs { config = {}; };
-  arcanum = pkgs.qt56.callPackage ./arcanum.nix {};
+  qt = pkgs.qt56;
 in {
-  inherit arcanum;
+  arcanum = qt.callPackage ./arcanum.nix {};
 }

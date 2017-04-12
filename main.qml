@@ -9,6 +9,6 @@ Window {
     WebEngineView {
         id: webview
         anchors.fill: parent
-        url: "http://wikipedia.com"
+        url: "https://google.com"
     }
 }
