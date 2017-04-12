@@ -8,7 +8,9 @@ Window {
     visible: true
     WebEngineView {
         id: webview
+        objectName: "web"
         anchors.fill: parent
-        url: "https://google.com"
+        url: "file:///nix/store/0p37y27yih0gk2k8zqfcfv2n4zhas9rs-vm-test-run-arcanum-test/log.html"
+        // url: "https://google.com"
     }
 }

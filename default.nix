@@ -25,12 +25,21 @@ let
     };
   };
 
-  pkgs = import nixpkgs {
-    overlays = [ haskellOverlay ];
+  customOverlay = self: super: {
+    arcanum = {
+      combined = self.callPackage ./combined.nix {};
+      client = self.qt56.callPackage ./client.nix {};
+      server = self.callPackage ./server.nix {};
+      tests = self.callPackage ./test/test.nix {};
+    };
   };
 
-  qt = pkgs.qt56;
+  args = {
+    overlays = [ haskellOverlay customOverlay ];
+  };
+
+  pkgs = import nixpkgs args;
 in {
-  arcanum = qt.callPackage ./arcanum.nix {};
-  server = pkgs.callPackage ./server.nix {};
+  inherit pkgs;
+  inherit (pkgs) arcanum;
 }
