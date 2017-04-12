@@ -30,7 +30,7 @@ let
       combined = self.callPackage ./combined.nix {};
       client = self.qt56.callPackage ./client.nix {};
       server = self.callPackage ./server.nix {};
-      tests = self.callPackage ./test/test.nix {};
+      tests = self.callPackage ./test.nix {};
     };
   };
 
