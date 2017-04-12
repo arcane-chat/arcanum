@@ -30,6 +30,29 @@ import           Turtle                    hiding (fp, s)
 
 import qualified Filesystem.Path.CurrentOS as FP
 
+
+
+--------------------------------------------------------------------------------
+
+tshow :: (Show s) => s -> Text
+tshow = show .> T.pack
+
+(|>) :: a -> (a -> b) -> b
+(|>) = flip ($)
+infixl 0 |>
+
+(.>) :: (a -> b) -> (b -> c) -> a -> c
+(.>) = flip (.)
+infixl 9 .>
+
+(<#>) :: (Functor f) => f a -> (a -> b) -> f b
+(<#>) = flip (<$>)
+infixr 4 <#>
+
+--------------------------------------------------------------------------------
+
+{-
+
 type Window = Int
 type Key    = Int
 type Button = Int
@@ -161,3 +184,5 @@ runCommand' (MkCommand {..}) = procStrictWithErr "xdo" args (pure mempty)
 
 tshow :: (Show s) => s -> Text
 tshow = show >>> T.pack
+
+-}
